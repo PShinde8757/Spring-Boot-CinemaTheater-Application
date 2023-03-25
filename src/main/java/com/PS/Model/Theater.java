@@ -17,13 +17,13 @@ import lombok.*;
 public class Theater {
     private @Id @GeneratedValue Long id;
     private String movieName, movieTime;
-    private int ticketPrice;
+    private int movieTicketPrice;
 
 
 
     public Theater(String movieName, String movieTime, int ticketPrice) {
         this.movieName = movieName;
         this.movieTime = movieTime;
-        this.ticketPrice = ticketPrice;
+        this.movieTicketPrice = ticketPrice;
     }
 }
