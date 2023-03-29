@@ -26,7 +26,7 @@ public class LoadDatabase {
                 log.info("Preloading "+ theaterRepository.save(new Theater("RRR","12.00 PM",250)));
                 log.info("Preloading "+ theaterRepository.save(new Theater("AntMan & Wasp","3 PM",350)));
 
-                theaterRepository.findAll().forEach(theater -> log.info("Preload "+theater));
+//                theaterRepository.findAll().forEach(theater -> log.info("Preload "+theater));
 
 
                 moviesRepository.save(new Movies("150 Minutes", Status.COMPLETE));

@@ -1,14 +1,9 @@
 package com.PS.CustomException;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
+public class MovieNotFoundException extends RuntimeException{
 
-@ControllerAdvice
-public class MovieNotFoundException {
-
-
+    public MovieNotFoundException(Long id){
+        super("Could Not Find Movie of id "+id );
+    }
 }
