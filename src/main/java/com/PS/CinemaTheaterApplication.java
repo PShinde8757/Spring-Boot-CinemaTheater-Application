@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @Slf4j
 @SpringBootApplication
-public class CinemaTheaterApplication {
+public class  CinemaTheaterApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CinemaTheaterApplication.class, args);
