@@ -80,7 +80,26 @@ public class MovieController {
                         .withDetail("You can't complete an order that is in the " + movies.getStatus() + " status"));
     }
 
+    @DeleteMapping("/movie/{id}/delete")
+    ResponseEntity<?> delete(@PathVariable Long id){
+        Movies movies=moviesRepository.findById(id)
+                .orElseThrow(() -> new MovieNotFoundException(id));
+        if(movies.getStatus()==Status.IN_PROGRESS){
+            movies.setStatus(Status.CANCELLED);
+            return ResponseEntity.ok(movieAssembler.toModel(moviesRepository.save(movies)));
+        }
+        return ResponseEntity
+                .status(HttpStatus.METHOD_NOT_ALLOWED)
+                .header(HttpHeaders.CONTENT_TYPE, MediaTypes.HTTP_PROBLEM_DETAILS_JSON_VALUE)
+                .body(Problem.create()
+                        .withTitle("Method not allowed")
+                        .withDetail("You can't complete an order that is in the " + movies.getStatus() + " status"));
+    }
 
-
+    @DeleteMapping("/movie/{id}")
+    ResponseEntity<?> deleteOrder(@PathVariable Long id){
+        moviesRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
